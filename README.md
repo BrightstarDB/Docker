@@ -21,6 +21,11 @@ our docker image from DockerHub with a single command:
 
 Then browse to http://your.host.server/brightstar to start using the browser interface to the store.
 
+Note that this image uses the default service configuration file that you can find in the `develop`
+directory (`BrightstarService.exe.config`). This configuration has no security configured for the
+BrightstarDB endpoint, so be warned! This image is really intended for quick evaluation / experimentation
+with BrightstarDB, not for production deployment.
+
 **Some notes on the command line**
 
 The -d and -t options just specify the mode that the container runs in, it will be run as a simple,
@@ -44,10 +49,14 @@ If you prefer, you can build from the Dockerfile. A simple way to do this would 
 
 2. cd to develop
 
-3. Build the image using a command like:
+3. (OPTIONAL) Make any changes you want to the service configuration file (`BrightstarService.exe.config`). You can refer to http://brightstardb.readthedocs.org/en/develop/Running_BrightstarDB/#brightstardb-service-configuration for more information about the configuration of the Brightstar service.
+
+4. (OPTIONAL) Make any changes you want to the Dockerfile itself
+
+5. Build the image using a command like:
 
         docker build -t "brightstardb/brightstardb-develop"
     
-4. Run the image, either using the start-bs.sh script provided (if you used our suggested tag),
+6. Run the image, either using the start-bs.sh script provided (if you used our suggested tag),
    or a similar invocation of docker run
        
