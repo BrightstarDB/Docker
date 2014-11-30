@@ -9,7 +9,7 @@ RUN curl http://download.mono-project.com/repo/xamarin.gpg -o xamarin.gpg \
   && apt-key add xamarin.gpg \
   && echo "deb http://download.mono-project.com/repo/debian wheezy main" >> /etc/apt/sources.list.d/mono-xamarin.list \
   && apt-get update \
-  && apt-get install -y mono-devel=$MONO_VERSION-0xamarin1
+  && apt-get install -y mono-devel=$MONO_VERSION-0xamarin2
 
 RUN rm -rf /var/lib/apt/lists/*
 
