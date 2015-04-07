@@ -20,10 +20,3 @@ ADD BrightstarService.exe.config /BrightstarDB/service/BrightstarService.exe.con
 
 WORKDIR /BrightstarDB/service
 CMD ["/usr/bin/mono", "BrightstarService.exe" ]
-
-
- 
-
-
-
-
