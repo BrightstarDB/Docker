@@ -1,24 +1,8 @@
-FROM ubuntu:14.04.1
+FROM mono:latest
 MAINTAINER  Kal Ahmed "kal@brightstardb.com"
 
-RUN apt-get update && apt-get install -y curl udev git
-
-ENV MONO_VERSION 3.10.0
-
-RUN curl http://download.mono-project.com/repo/xamarin.gpg -o xamarin.gpg \
-  && apt-key add xamarin.gpg \
-  && echo "deb http://download.mono-project.com/repo/debian wheezy main" >> /etc/apt/sources.list.d/mono-xamarin.list \
-  && apt-get update \
-  && apt-get install -y mono-devel=$MONO_VERSION-0xamarin2
-
-RUN rm -rf /var/lib/apt/lists/*
-
-RUN mozroots --import --sync --quiet
-
-RUN mozroots --import --machine --sync \
-    && yes | certmgr -ssl -m https://go.microsoft.com  \ 
-    && yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net \
-    && yes | certmgr -ssl -m https://nuget.org
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git-core
 
 RUN git clone https://github.com/BrightstarDB/BrightstarDB.git /bssrc \
     && cd /bssrc \
